@@ -9,7 +9,7 @@
       <SidebarToggler class="d-md-down-none" display="lg" />
       <b-navbar-nav class="d-md-down-none ml-auto">
         <b-nav-item class="d-md-down-none">
-          <DefaultHeaderDropdown/>
+          <ProjectHeader/>
         </b-nav-item>
       </b-navbar-nav>
       <AsideToggler class="d-none d-lg-block" />
@@ -34,7 +34,6 @@
       </AppAside>
     </div>
     <TheFooter>
-      <!--footer-->
       <div>
 <!--        <a href="https://coreui.io">CoreUI</a>-->
         <span class="ml-1">&copy; 2022 MEPHI</span>
@@ -51,11 +50,14 @@
 import nav from '@/_nav'
 import { Header as AppHeader, SidebarToggler, Sidebar as AppSidebar, SidebarFooter, SidebarForm, SidebarHeader, SidebarMinimizer, SidebarNav, Aside as AppAside, AsideToggler, Footer as TheFooter, Breadcrumb } from '@coreui/vue'
 import DefaultAside from './DefaultAside'
-import DefaultHeaderDropdown from './DefaultHeaderDropdown'
+import DefaultHeaderDropdown from './DefaultHeaderDropdownAccnt.vue'
+import ProjectHeader from "@/components/ProjectHeader";
+import axios from "../services/api";
 
 export default {
   name: 'DefaultContainer',
   components: {
+    ProjectHeader,
     AsideToggler,
     AppHeader,
     AppSidebar,
@@ -73,7 +75,8 @@ export default {
   },
   data () {
     return {
-      navItems: nav.items
+      navItems: nav.items,
+      auth: ''
     }
   },
   computed: {
@@ -83,6 +86,16 @@ export default {
     list () {
       return this.$route.matched.filter((route) => {console.log('route', route); return route.name || route.meta.label })
     }
-  }
+  },
+  /*beforeCreate() {
+    axios.get("http://localhost:2000/logged")
+        .then(res => {
+          this.$store.commit('UPDATE_EMAIL', res.data.email)
+        })
+        .catch((err) => {
+          console.log(err)
+          this.$store.commit('UPDATE_EMAIL', null)
+        })
+  }*/
 }
 </script>

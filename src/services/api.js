@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from './custom_axios'
 
 export default {
     get(resource, params) {
@@ -6,14 +6,23 @@ export default {
     },
 
     post(resource, data) {
-        return axios.post(resource, data)
+        return axios.post(resource, data, {withCredentials:true, headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'http://localhost:2000/',
+                'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'}})
     },
 
     put(resource, data) {
-        return axios.put(resource, data)
+        return axios.put(resource, data, {withCredentials:true, headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'http://localhost:2000/',
+                'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'}})
     },
 
     delete(resource) {
-        return axios.delete(resource)
+        return axios.delete(resource, {withCredentials:true, headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'http://localhost:2000/',
+                'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'}})
     },
 }

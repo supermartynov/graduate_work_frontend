@@ -7,6 +7,8 @@ import BootstrapVue from 'bootstrap-vue'
 import App from './App'
 import store from './store/index'
 import router from './router/index'
+import createPersistedState from "vuex-persistedstate";
+
 
 // todo
 // cssVars()
@@ -23,3 +25,4 @@ new Vue({
     App
   }
 })
+

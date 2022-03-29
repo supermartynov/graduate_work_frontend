@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Registration from "@/components/Registration";
+import Authorization from "@/components/Authorization";
 
 // Containers
 const DefaultContainer = () => import('@/components/DefaultContainer')
@@ -37,5 +39,15 @@ export default new Router({
         }
       ]
     },
+    {
+      path: '/registration',
+      name: 'Register',
+      component: Registration
+    },
+    {
+      path: '/authorization',
+      name: 'Authorization',
+      component: Authorization
+    }
   ]
 })

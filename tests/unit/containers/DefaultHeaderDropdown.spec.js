@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
-import DefaultHeaderDropdown from '@/components/DefaultHeaderDropdown'
+import DefaultHeaderDropdown from '@/components/DefaultHeaderDropdownAccnt.vue'
 
 Vue.use(BootstrapVue)
 
-describe('DefaultHeaderDropdown.vue', () => {
+describe('DefaultHeaderDropdownAccnt.vue', () => {
   it('has a name', () => {
     expect(DefaultHeaderDropdown.name).toMatch('DefaultHeaderDropdown')
   })
