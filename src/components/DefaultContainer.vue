@@ -87,15 +87,15 @@ export default {
       return this.$route.matched.filter((route) => {console.log('route', route); return route.name || route.meta.label })
     }
   },
-  /*beforeCreate() {
+  beforeCreate() {
     axios.get("http://localhost:2000/logged")
         .then(res => {
-          this.$store.commit('UPDATE_EMAIL', res.data.email)
+          this.$store.commit('UPDATE_EMAIL', res.data.user.email)
         })
         .catch((err) => {
           console.log(err)
           this.$store.commit('UPDATE_EMAIL', null)
         })
-  }*/
+  }
 }
 </script>
