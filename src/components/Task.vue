@@ -35,9 +35,11 @@
 
 <script>
 import TaskAdd from "@/components/TaskAdd";
+import Chat from "@/components/Chat";
 export default {
   name: "Task",
   components: {
+    Chat,
     TaskAdd
   },
   data: function() {

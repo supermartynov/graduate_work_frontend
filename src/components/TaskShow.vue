@@ -49,12 +49,15 @@
         </b-card>
       </b-col>
     </b-row>
+    <Chat></Chat>
   </div>
 </template>
 
 <script>
+import Chat from "@/components/Chat";
 export default {
   name: "TaskShow",
+  components: {Chat},
   data: function() {
     return {
       answer: {}
@@ -79,6 +82,10 @@ export default {
   },
   mounted: function() {
     this.$store.dispatch('GET_TASK', {params: {id: this.$route.params.id}});
+    this.$socket.emit('join_task_page', {task_id: this.$route.params.id})
+  },
+  updated: function () {
+    this.$socket.emit('join_task_page', {task_id: this.$route.params.id})
   }
 }
 </script>

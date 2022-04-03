@@ -17,8 +17,8 @@ export default {
         }
     },
     mutations: {
-        UPDATE_USER(state, user) {
-            state.user = user;
+        UPDATE_SOCKET_ID(state, socket_id) {
+            state.socket_id = socket_id;
         },
         UPDATE_EMAIL(state, email) {
             state.email = email;
@@ -27,10 +27,11 @@ export default {
     state: {
         user: {},
         email: '',
+        socket_id: ''
     },
     getters: {
-        GET_USER(state) {
-            return state.user;
+        GET_SOCKET_ID(state) {
+            return state.socket_id;
         },
         GET_EMAIL(state) {
             return state.email;

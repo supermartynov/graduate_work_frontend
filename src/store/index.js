@@ -6,6 +6,8 @@ import task from './modules/task'
 import difficulty from "./modules/difficulty";
 import user from "./modules/user"
 import createPersistedState from "vuex-persistedstate";
+import socket from "./modules/socket";
+import messages from "./modules/messages";
 
 Vue.use(Vuex)
 
@@ -16,6 +18,8 @@ export default new Vuex.Store({
         database,
         task,
         difficulty,
-        user
+        user,
+        socket,
+        messages
     }
 })

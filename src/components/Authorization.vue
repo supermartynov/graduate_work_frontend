@@ -90,9 +90,12 @@
 import {validationMixin} from 'vuelidate'
 import {email, required, minLength} from 'vuelidate/lib/validators'
 import axios from "../services/api";
+import Chat from "@/components/Chat";
+import Task from "@/components/Task";
 
 export default {
   name: 'Login',
+  components: {Task, Chat},
   mixins: [validationMixin,],
   data() {
     return {
