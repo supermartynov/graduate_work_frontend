@@ -11,10 +11,10 @@
     <template slot="dropdown">
       <b-dropdown-header tag="div" class="text-center"><strong>Аккаунт</strong></b-dropdown-header>
       <b-dropdown-item><i class="fa fa-bell-o" />
-        <router-link to="authorization">Войти в личный кабинет</router-link>
+        <router-link to="/authorization">Войти в личный кабинет</router-link>
       </b-dropdown-item>
       <b-dropdown-item><i class="fa fa-envelope-o" />
-       <router-link to="registration">Зарегистрироваться</router-link>
+       <router-link to="/registration">Зарегистрироваться</router-link>
       </b-dropdown-item>
     </template>
   </AppHeaderDropdown>

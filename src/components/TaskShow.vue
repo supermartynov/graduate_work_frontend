@@ -40,7 +40,7 @@
       </b-col>
       <b-col lg="6">
         <b-card>
-          <div slot="header" v-html="caption"></div>
+<!--          <div slot="header" v-html="caption"></div>-->
           <b-table bordered="bordered" fixed="fixed" :items="items">
           </b-table>
           <nav>

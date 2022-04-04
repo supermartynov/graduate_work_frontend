@@ -1,6 +1,7 @@
 <template>
   <div>
     <b-row>
+      {{get_messages[this.$route.params.id]}}
       <b-card>
         <b-col lg="12">
           <b-form-textarea v-model="message.content" id="description" placeholder="Enter the description of the task"></b-form-textarea>
@@ -24,7 +25,7 @@ export default {
       }
     }
   },
-  mounted: {
+  mounted: function () {
 
   },
   computed: {
@@ -40,7 +41,6 @@ export default {
     },
     clear_array: function () {
       this.$store.commit("DELETE_MESSAGES");
-      this.commit.get_messages();
     }
   }
 }
