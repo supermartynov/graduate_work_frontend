@@ -8,6 +8,7 @@
         <div class="panel">
           <div class="panel-body">
             <div class="media-block">
+              {{get_messages}}
               <TreeMessage v-for="message in get_messages" :message="message"/>
             </div>
           </div>
@@ -54,7 +55,7 @@ export default {
 
 <style>
 body {
-  background: url(/images/bg/bg-1.png)
+  background: white;
 }
 
 .img-sm {

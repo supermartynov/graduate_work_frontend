@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-for="child in children">
-      <div v-if="!child.children" v-bind:class="{'media-block': child.hierarchy_level === 2}">
+      <div v-if="!child.children">
         <ReplyComment :message="child"/>
       </div>
       <div v-else>

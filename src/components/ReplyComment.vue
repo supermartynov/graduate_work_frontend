@@ -1,5 +1,5 @@
 <template>
-  <div class="media-body ml-3">
+  <div v-bind:class="{'ml-3': message.hierarchy_level === 2}">
     <a class="media-left" href="#"><img class="img-circle img-sm" alt="Профиль пользователя"
                                         src="https://bootstraptema.ru/snippets/icons/2016/mia/2.png"></a>
     <div class="mar-btm">

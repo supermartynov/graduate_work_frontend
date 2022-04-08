@@ -27,7 +27,6 @@ export default {
                     message_id: data.message_id,
                     create_time: data.create_time,
                     hierarchy_level: data.hierarchy_level,
-                    login: data.user.login
             })
         },
         UPDATE_MESSAGES(state, data) {
