@@ -15,6 +15,7 @@ export default {
     },
     mutations: {
         SOCKET_NEW_MESSAGE(state, data) {
+            console.log(data)
             if (typeof data === 'string') {
                 return
             }
