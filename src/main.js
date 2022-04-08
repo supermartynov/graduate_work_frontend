@@ -9,7 +9,6 @@ import store from './store/index'
 import router from './router/index'
 import VueSocketIO from "vue-socket.io";
 
-
 // todo
 // cssVars()
 Vue.use(new VueSocketIO({

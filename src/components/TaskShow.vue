@@ -49,7 +49,7 @@
         </b-card>
       </b-col>
     </b-row>
-    <Chat></Chat>
+    <Chat :task_id="this.$route.params.id"/>
   </div>
 </template>
 

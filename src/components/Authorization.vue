@@ -121,8 +121,7 @@ export default {
       axios.post("/login", {
         login: this.form.email,
         password: this.form.password
-      })
-          .then(() => {
+      }).then(() => {
             this.$store.commit('UPDATE_EMAIL', this.form.email)
             this.show = !this.show
             this.$router.push("/")

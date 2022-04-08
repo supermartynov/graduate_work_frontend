@@ -1,32 +1,41 @@
 <template>
-  <div>
-    <b-row>
-      {{get_messages[this.$route.params.id]}}
-      <b-card>
-        <b-col lg="12">
-          <b-form-textarea v-model="message.content" id="description" placeholder="Enter the description of the task"></b-form-textarea>
-          <b-button @click="send_message">Отправить комментарий</b-button>
-        </b-col>
-      </b-card>
-      <br>
-      <b-button @click="clear_array">Очистить массив с сообщениями</b-button>
-    </b-row>
-  </div>
+  <section class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel">
+         <CommentForm/>
+        </div>
+        <div class="panel">
+          <div class="panel-body">
+            <div class="media-block">
+              <TreeMessage v-for="message in get_messages" :message="message"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
+import TreeMessage from "@/components/TreeMessage";
+import CommentForm from "@/components/CommentForm";
+
 export default {
-  data: function() {
+  components: {CommentForm, TreeMessage},
+  props: ['task_id'],
+  data: function () {
     return {
-      task_id: this.$route.params.id,
+      room: this.task_id,
       message: {
         email: this.$store.getters.GET_EMAIL,
-        content: '',
+        message_body: '',
+        parent_message_id: null
       }
     }
   },
   mounted: function () {
-
+    this.$store.dispatch('GET_MESSAGES_FROM_DB', {params: {id: this.$route.params.id}});
   },
   computed: {
     get_messages() {
@@ -36,12 +45,114 @@ export default {
   methods: {
     send_message: function () {
       var payload = this.message;
-      payload.task_id = this.task_id;
+      payload.room = task_id;
       this.$socket.emit('send_message', payload)
-    },
-    clear_array: function () {
-      this.$store.commit("DELETE_MESSAGES");
     }
   }
 }
 </script>
+
+<style>
+body {
+  background: url(/images/bg/bg-1.png)
+}
+
+.img-sm {
+  width: 46px;
+  height: 46px;
+}
+
+.panel {
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.075);
+  border-radius: 0;
+  border: 0;
+  margin-bottom: 15px;
+}
+
+.panel .panel-footer, .panel > :last-child {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.panel .panel-heading, .panel > :first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.panel-body {
+  padding: 25px 20px;
+}
+
+.media-block .media-left {
+  display: block;
+  float: left
+}
+
+.media-block .media-right {
+  float: right
+}
+
+.media-block .media-body {
+  display: block;
+  overflow: hidden;
+  width: auto
+}
+
+.middle .media-left,
+.middle .media-right,
+.middle .media-body {
+  vertical-align: middle
+}
+
+.thumbnail {
+  border-radius: 0;
+  border-color: #e9e9e9
+}
+
+.tag.tag-sm, .btn-group-sm > .tag {
+  padding: 5px 10px;
+}
+
+.tag:not(.label) {
+  background-color: #fff;
+  padding: 6px 12px;
+  border-radius: 2px;
+  border: 1px solid #cdd6e1;
+  font-size: 12px;
+  line-height: 1.42857;
+  vertical-align: middle;
+  -webkit-transition: all .15s;
+  transition: all .15s;
+}
+
+.text-muted, a.text-muted:hover, a.text-muted:focus {
+  color: #acacac;
+}
+
+.text-sm {
+  font-size: 0.9em;
+}
+
+.text-5x, .text-4x, .text-5x, .text-2x, .text-lg, .text-sm, .text-xs {
+  line-height: 1.25;
+}
+
+.btn-trans {
+  background-color: transparent;
+  border-color: transparent;
+  color: #929292;
+}
+
+.btn-icon {
+  padding-left: 9px;
+  padding-right: 9px;
+}
+
+.btn-sm, .btn-group-sm > .btn, .btn-icon.btn-sm {
+  padding: 5px 10px !important;
+}
+
+.mar-top {
+  margin-top: 15px;
+}
+</style>

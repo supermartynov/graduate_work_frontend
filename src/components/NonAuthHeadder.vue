@@ -27,7 +27,8 @@ export default {
 name: "NonAuthHeadder",
 components: {
   AppHeaderDropdown
-}
+},
+
 }
 </script>
 <style scoped>
