@@ -48,6 +48,7 @@ export default {
                     }
 
                     path.push({
+                        id: data.message_id,
                         room: data.room,
                         message_body: data.message_body,
                         parent_message_id: data.parent_message_id,

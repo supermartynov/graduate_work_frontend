@@ -2,6 +2,7 @@
   <div>
     <a class="media-left" href="#"><img class="img-circle img-sm" alt="Профиль пользователя"
                                         src="https://bootstraptema.ru/snippets/icons/2016/mia/2.png"></a>
+    {{message.room}}
     <div class="card w-75">
       <div class="card-body">
         <h5 class="card-subtitle">{{ message.user.login }}</h5>
