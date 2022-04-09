@@ -7,7 +7,7 @@
     <div v-bind:class="{'media-body': !message.parentId}">
       <div>
         <div class="mar-btm">
-          <a href="#" class="btn-link text-semibold media-heading box-inline">{{ message.user.login }}</a>
+          <a v-if="message.user" href="#" class="btn-link text-semibold media-heading box-inline">{{ message.user.login }}</a>
           <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> {{ message.created }}</p>
         </div>
         <p>{{ message.message_body }} </p> <!-- Сообщение от пользователя  !-->

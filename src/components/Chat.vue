@@ -8,12 +8,14 @@
         <div class="panel">
           <div class="panel-body">
             <div class="media-block">
-              {{get_messages}}
-              <TreeMessage v-for="message in get_messages" :message="message"/>
+              <TreeMessage v-for="message in get_messages[this.$route.params.id]" :message="message"/>
             </div>
           </div>
         </div>
       </div>
+      {{tmp}}
+      <textarea></textarea>
+      <b-button @click="soutt">кнопка</b-button>
     </div>
   </section>
 </template>
@@ -27,6 +29,7 @@ export default {
   props: ['task_id'],
   data: function () {
     return {
+      tmp: '',
       room: this.task_id,
       message: {
         email: this.$store.getters.GET_EMAIL,
@@ -48,6 +51,9 @@ export default {
       var payload = this.message;
       payload.room = task_id;
       this.$socket.emit('send_message', payload)
+    },
+    soutt: function () {
+      this.tmp = (this.get_messages[this.room])
     }
   }
 }

@@ -16,8 +16,7 @@ export default {
       payload: {
         message_body: '',
         email: this.$store.getters.GET_EMAIL,
-        room: 7,
-        parent_message_id: 5
+        room: this.$route.params.id
       }
     }
 
