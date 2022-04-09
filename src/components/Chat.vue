@@ -30,7 +30,7 @@ export default {
   data: function () {
     return {
       tmp: '',
-      room: this.task_id,
+      room: this.$route.params.id,
       message: {
         email: this.$store.getters.GET_EMAIL,
         message_body: '',

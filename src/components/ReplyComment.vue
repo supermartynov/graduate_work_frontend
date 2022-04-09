@@ -1,24 +1,25 @@
 <template>
-  <div class="ml-3">
+  <div>
     <a class="media-left" href="#"><img class="img-circle img-sm" alt="Профиль пользователя"
                                         src="https://bootstraptema.ru/snippets/icons/2016/mia/2.png"></a>
-    <div class="mar-btm">
-      <a href="#" class="btn-link text-semibold media-heading box-inline">{{ message.user.login }}</a>
-      <p class="text-muted text-sm"> {{ message.created }}</p>
-    </div>
-    <p>{{ message.message_body }} </p>
-    <button type="button" class="btn btn-link mt-n4" @click="show_form">
-      Ответить
-    </button>
-    <div class="panel" v-show="show">
-      <div class="panel-body">
-        <textarea class="form-control" rows="2" v-model="payload.message_body" placeholder="Добавьте Ваш комментарий"/>
-        <div class="mar-top clearfix">
-          <button class="btn btn-sm btn-primary pull-right" @click="reply">Ответить</button>
+    <div class="card w-75">
+      <div class="card-body">
+        <h5 class="card-subtitle">{{ message.user.login }}</h5>
+        <p class="card-text">{{ message.message_body }}</p>
+        <button type="button" class="btn btn-link mt-n4" @click="show_form">
+          Ответить
+        </button>
+        <div class="panel" v-show="show">
+          <div class="panel-body">
+            <textarea class="form-control" rows="2" v-model="payload.message_body"
+                      placeholder="Добавьте Ваш комментарий"/>
+            <div class="mar-top clearfix">
+              <button class="btn btn-sm btn-primary pull-right" @click="reply">Ответить</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <hr>
   </div>
 </template>
 

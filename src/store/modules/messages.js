@@ -28,8 +28,6 @@ export default {
                 tmp[data.room] = []
             }
 
-            var parents_id = [] //массив id родителей
-
             axios.get('/message/parents/' + data.message_id)
                 .then(parents => {
                     var parent_id_arrray = []
@@ -41,12 +39,16 @@ export default {
 
                     for (const parent_id of parent_id_arrray) {
                         var parent = path.find(el => el.id === parent_id)
-                        if (parent && parent.children) {
+                        if (parent) {
+                            if (!parent.children) {
+                                parent.children = []
+                            }
                             path = parent.children
                         }
                     }
 
                     path.push({
+                        room: data.room,
                         message_body: data.message_body,
                         parent_message_id: data.parent_message_id,
                         message_id: data.message_id,
@@ -56,8 +58,6 @@ export default {
                             login: data.email.substr(0, data.email.indexOf('@'))
                         }
                     })
-                    console.log("я тут ")
-                    console.log(tmp[data.room])
                     state.messages = tmp
                 })
 
