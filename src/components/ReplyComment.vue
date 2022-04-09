@@ -1,5 +1,5 @@
 <template>
-  <div v-bind:class="{'ml-3': message.hierarchy_level === 2}">
+  <div class="ml-3">
     <a class="media-left" href="#"><img class="img-circle img-sm" alt="Профиль пользователя"
                                         src="https://bootstraptema.ru/snippets/icons/2016/mia/2.png"></a>
     <div class="mar-btm">
@@ -7,7 +7,6 @@
       <p class="text-muted text-sm"> {{ message.created }}</p>
     </div>
     <p>{{ message.message_body }} </p>
-
     <button type="button" class="btn btn-link mt-n4" @click="show_form">
       Ответить
     </button>
