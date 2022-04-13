@@ -12,6 +12,8 @@ export default {
                 .catch(err => console.log(err))
         },
         LOGOUT: function ({commit}) {
+            commit("UPDATE_TASKS", [])
+            commit("UPDATE_MESSAGES", [])
             axios.get("/logout")
                 .then(commit("UPDATE_EMAIL", ""))
                 .catch(err => console.log(err))

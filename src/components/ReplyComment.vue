@@ -2,11 +2,12 @@
   <div>
     <a class="media-left" href="#"><img class="img-circle img-sm" alt="Профиль пользователя"
                                         src="https://bootstraptema.ru/snippets/icons/2016/mia/2.png"></a>
-    {{message.room}}
+    <a v-if="message.parentId" v-bind:href="'#' + message.parentId">
+    </a>
     <div class="card w-75">
       <div class="card-body">
-        <h5 class="card-subtitle">{{ message.user.login }}</h5>
-        <p class="card-text">{{ message.message_body }}</p>
+        <h5 v-bind:id="message.id" class="card-subtitle">{{ message.user.login }}</h5>
+        <p class="card-text"> {{ message.message_body }}</p>
         <button type="button" class="btn btn-link mt-n4" @click="show_form">
           Ответить
         </button>

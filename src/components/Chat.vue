@@ -13,9 +13,6 @@
           </div>
         </div>
       </div>
-      {{tmp}}
-      <textarea></textarea>
-      <b-button @click="soutt">кнопка</b-button>
     </div>
   </section>
 </template>
@@ -51,9 +48,6 @@ export default {
       var payload = this.message;
       payload.room = task_id;
       this.$socket.emit('send_message', payload)
-    },
-    soutt: function () {
-      this.tmp = (this.get_messages[this.room])
     }
   }
 }
