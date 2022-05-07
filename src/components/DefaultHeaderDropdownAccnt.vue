@@ -12,6 +12,7 @@
       <b-dropdown-header tag="div" class="text-center"><strong>Аккаунт</strong></b-dropdown-header>
       <b-dropdown-item><i class="fa fa-bell-o" />
         Личный кабинет
+        {{$t('someMessage')}}
       </b-dropdown-item>
       <b-dropdown-item><i class="fa fa-envelope-o" />
         Сообщения
