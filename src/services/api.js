@@ -19,7 +19,7 @@ export default {
     delete(resource) {
         return axios.delete(resource, {withCredentials:true, headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': 'http://localhost:2000/',
+                'Access-Control-Allow-Origin': 'http://localhost:8080/',
                 'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'}})
     },
 }

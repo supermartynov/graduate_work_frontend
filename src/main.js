@@ -8,6 +8,7 @@ import App from './App'
 import store from './store/index'
 import router from './router/index'
 import VueSocketIO from "vue-socket.io";
+import {i18n} from "@/plugin/i18n";
 
 // todo
 // cssVars()
@@ -23,10 +24,13 @@ Vue.use(new VueSocketIO({
 
 Vue.use(BootstrapVue)
 
+Vue.config.productionTip = false
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   store,
+  i18n,
   router,
   template: '<App/>',
   components: {

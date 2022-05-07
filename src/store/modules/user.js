@@ -29,13 +29,16 @@ export default {
         UPDATE_EMAIL(state, email) {
             state.email = email;
             //state.login = email.substr(0, email.indexOf('@'));
+        },
+        UPDATE_LOGIN(state, email) {
+            state.login = email.substr(0, email.indexOf('@'));
         }
     },
     state: {
         user: {},
         email: '',
         socket_id: '',
-        login: 'lalala'
+        login: ''
     },
     getters: {
         GET_LOGIN(state) {

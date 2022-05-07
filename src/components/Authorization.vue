@@ -123,6 +123,7 @@ export default {
         password: this.form.password
       }).then(() => {
             this.$store.commit('UPDATE_EMAIL', this.form.email)
+            this.$store.commit('UPDATE_LOGIN', this.form.email)
             this.show = !this.show
             this.$router.push("/")
           })
