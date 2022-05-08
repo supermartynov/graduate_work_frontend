@@ -1,8 +1,8 @@
 <template>
   <div class="panel-body">
-    <textarea class="form-control" rows="2" v-model="payload.message_body" placeholder="Добавьте Ваш комментарий"/>
+    <textarea class="form-control" rows="2" v-model="payload.message_body" v-bind:placeholder="$t('chat.add-comment')"/>
     <div class="mar-top clearfix">
-      <button class="btn btn-sm btn-primary pull-right" @click="reply">Ответить</button>
+      <button class="btn btn-sm btn-primary pull-right" @click="reply">{{$t('chat.comment')}}</button>
     </div>
   </div>
 </template>

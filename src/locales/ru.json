@@ -1,0 +1,57 @@
+{
+  "message": "Привет i18n !!",
+  "nav": {
+    "topics": "Темы",
+    "tasks": "Задания"
+  },
+  "registration": {
+    "register": "Регистрация",
+    "go-home": "На главную",
+    "create-account": "Создайте аккаунт",
+    "incorrect-mail": "Некорректный email",
+    "already-busy-email": "Данная почта уже занята",
+    "min-password-length": "Минимальная длина пароля",
+    "different-password": "Пароли не совпадают",
+    "password": "Пароль",
+    "password-confirm": "Подтверждение пароля",
+    "email": "Почта"
+  },
+  "authorization": {
+    "login": "Войти",
+    "enter-cred": "Введите логин и пароль",
+    "incorrect-mail": "Некорректный email",
+    "incorrect-cred": "Неверный логин или пароль",
+    "go-home": "На главную",
+    "login-with": "Войти с помощью:",
+    "already-auth": "Не зарегистрированы?",
+    "start-today": "Начните изучать SQL уже сегодня!",
+    "register": "Зарегистрироваться!",
+    "password": "Пароль",
+    "username": "Логин"
+  },
+  "account-dropdown": {
+    "account": "Аккаунт",
+    "login": "Войти в личный кабинет",
+    "register": "Зарегестрироваться"
+  },
+  "auth-account-dropdown": {
+    "account": "Аккаунт",
+    "personal-account": "Личный кабинет",
+    "messages": "Сообщения",
+    "settings": "Настройки",
+    "account-settings": "Настройки аккаунта",
+    "logout": "Выйти"
+  },
+  "langSwitcher": "язык",
+  "chat": {
+    "reply": "Ответить",
+    "add-comment": "Добавьте ваш комментарий",
+    "delete": "Удалить",
+    "change": "Изменить",
+    "deleted": "Комментарий изменен",
+    "comment": "Комментировать"
+  },
+  "mephi": {
+    "name": "МИФИ"
+  }
+}

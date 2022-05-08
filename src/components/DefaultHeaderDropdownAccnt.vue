@@ -9,22 +9,22 @@
           alt="user" />
     </template>\
     <template slot="dropdown">
-      <b-dropdown-header tag="div" class="text-center"><strong>Аккаунт</strong></b-dropdown-header>
+      <b-dropdown-header tag="div" class="text-center"><strong>{{ $t('auth-account-dropdown.account') }}</strong></b-dropdown-header>
       <b-dropdown-item><i class="fa fa-bell-o" />
-        Личный кабинет
+        {{ $t('auth-account-dropdown.personal-account') }}
       </b-dropdown-item>
       <b-dropdown-item><i class="fa fa-envelope-o" />
-        Сообщения
+        {{ $t('auth-account-dropdown.messages') }}
       </b-dropdown-item>
       <b-dropdown-header
           tag="div"
           class="text-center">
-        <strong>Настройки</strong>
+        <strong>{{ $t('auth-account-dropdown.settings') }}</strong>
       </b-dropdown-header>
       <b-dropdown-item><i class="fa fa-wrench" />
-        Настройки аккаунта
+        {{ $t('auth-account-dropdown.account-settings') }}
       </b-dropdown-item>
-      <b-dropdown-item @click="goToLoginPage"><i class="fa fa-lock" /> Выйти из аккаунта</b-dropdown-item>
+      <b-dropdown-item @click="goToLoginPage"><i class="fa fa-lock" /> {{ $t('auth-account-dropdown.logout') }}</b-dropdown-item>
     </template>
   </AppHeaderDropdown>
 </template>

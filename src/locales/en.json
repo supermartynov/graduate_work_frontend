@@ -1,0 +1,57 @@
+{
+  "message": "hello i18n !!",
+  "nav": {
+    "topics": "Topics",
+    "tasks": "Tasks"
+  },
+  "registration": {
+    "register": "Registration",
+    "go-home": "Home",
+    "create-account": "Create account",
+    "incorrect-mail": "Incorrect email",
+    "already-busy-email": "Already registered",
+    "min-password-length": "Minimal password length is 5 symbols",
+    "different-password": "Different passwords",
+    "password": "Password",
+    "password-confirm": "Password confirm",
+    "email": "Email"
+  },
+  "authorization": {
+    "login": "Login",
+    "enter-cred": "Pass login and password",
+    "incorrect-mail": "Incorrect email",
+    "incorrect-cred": "Incorrect email or login",
+    "go-home": "Home",
+    "login-with": "Login with:",
+    "already-auth": "Are you not registered?",
+    "start-today": "Start learning SQL today!",
+    "register": "Register!",
+    "password": "Password",
+    "username": "Username"
+  },
+  "account-dropdown": {
+    "account": "Account",
+    "login": "Login",
+    "register": "Register"
+  },
+  "auth-account-dropdown": {
+    "account": "Account",
+    "personal-account": "Personal account",
+    "messages": "Messages",
+    "settings": "Settings",
+    "account-settings": "Account-settings",
+    "logout": "Logout"
+  },
+  "langSwitcher": "language",
+  "chat": {
+    "reply": "Reply",
+    "add-comment": "Add your comment",
+    "delete": "Delete",
+    "change": "Edit",
+    "deleted": "Comment is deleted",
+    "comment": "Сomment"
+  },
+  "mephi": {
+    "name": "MEPHI"
+  }
+}

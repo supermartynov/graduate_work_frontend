@@ -8,14 +8,15 @@
               <b-form @submit.prevent="register">
                 <b-row>
                   <b-col md="9">
-                    <h1>Регистрация</h1>
+                    <h1>{{ $t('registration.register') }}</h1>
                   </b-col>
                   <b-col>
-                    <router-link to="/"><p>На главную</p></router-link>
+                    <router-link v-bind:to="`/` + $i18n.locale + `/topics`"><p>{{ $t('registration.go-home') }}</p></router-link>
                   </b-col>
+
                 </b-row>
 
-                <p class="text-muted">Создайте аккаунт</p>
+                <p class="text-muted">{{ $t('registration.create-account') }}</p>
 
                 <b-input-group id="email_input" class="mb-3">
                   <b-input-group-prepend>
@@ -25,13 +26,13 @@
                                 id="email"
                                 v-model.trim="form.email"
                                 :class="{'is-invalid': ($v.form.email.$dirty && !$v.form.email.required || $v.form.email.$dirty && !$v.form.email.email)}"
-                                placeholder="Почта"
+                                v-bind:placeholder="$t('registration.email')"
                                 autocomplete="email" />
                   <small class="invalid-feedback" v-if="$v.form.email.$dirty && !$v.form.email.required || $v.form.email.$dirty && !$v.form.email.email">
-                    Некорректный email
+                    {{ $t('registration.incorrect-mail') }}
                   </small>
                   <small class="invalid-feedback d-block" v-else-if="alreadyTakenEmail">
-                    Данная почта уже занята
+                    {{ $t('registration.already-busy-email') }}
                   </small>
                 </b-input-group>
 
@@ -43,10 +44,10 @@
                                 class="form-control"
                                 v-model="form.password"
                                 :class="{'is-invalid': ($v.form.password.$dirty && !$v.form.password.required) || ($v.form.password.$dirty && !$v.form.password.minLength)}"
-                                placeholder="Пароль"
+                                v-bind:placeholder="$t('registration.password')"
                                 autocomplete="new-password"  />
                   <small class="invalid-feedback d-block" v-if="($v.form.password.$dirty && !$v.form.password.required) || ($v.form.password.$dirty && !$v.form.password.minLength)">
-                    Минимальная длина пароля - {{ $v.form.password.$params.minLength.min }} символов
+                    {{ $t('registration.min-password-length') }} - {{ $v.form.password.$params.minLength.min }}
                   </small>
                 </b-input-group>
 
@@ -54,12 +55,14 @@
                   <b-input-group-prepend>
                     <b-input-group-text><i class="icon-lock"></i></b-input-group-text>
                   </b-input-group-prepend>
-                  <b-form-input type="password" v-model="form.password_confirm" class="form-control" placeholder="Подтверждение пароля" autocomplete="new-password"/>
+                  <b-form-input type="password" v-model="form.password_confirm" class="form-control" v-bind:placeholder="$t('registration.password-confirm')" autocomplete="new-password"/>
                   <small v-if="form.password !== form.password_confirm && $v.form.password_confirm.$dirty" class="invalid-feedback d-block">
-                    Пароли не совпадают
+                    {{ $t('registration.different-password') }}
                   </small>
                 </b-input-group>
-                <b-button type="submit" variant="success" block>Создать аккаунт</b-button>
+                <b-button type="submit" variant="success" block>
+                  {{ $t('registration.create-account') }}
+                </b-button>
               </b-form>
             </b-card-body>
           </b-card>
@@ -73,6 +76,7 @@
 import {validationMixin} from 'vuelidate'
 import {email, required, minLength} from 'vuelidate/lib/validators'
 import axios from "../services/api";
+import {i18n} from '../plugin/i18n';
 export default {
   name: 'Register',
   mixins: [validationMixin,],
@@ -106,7 +110,7 @@ export default {
         password_confirm: this.form.password_confirm
       })
       .then(() => {
-        this.$router.push("/authorization")
+        this.$router.push(`${i18n.locale}/authorization`)
       })
       .catch(err => {
         if (err.response.request.status === 409) {

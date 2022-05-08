@@ -19,7 +19,7 @@ export default new Router({
     routes: [
         {
             path: '/',
-            redirect: `${i18n.locale}/topics`,
+            redirect: `/${i18n.locale}/topics`,
             name: 'Home',
             component: DefaultContainer,
             children: [
@@ -29,25 +29,37 @@ export default new Router({
                     component: Topic
                 },
                 {
-                    path: `${i18n.locale}/tasks`,
+                    path: `:lang/tasks`,
                     name: 'Tasks',
                     component: Task
                 },
                 {
-                    path: `${i18n.locale}/tasks/:id`,
+                    path: `:lang/tasks/:id`,
                     name: 'Tasks / 1',
                     component: TaskShow
                 }
             ]
         },
         {
-            path: '/registration',
+            path: '/authorization',
+            redirect: `${i18n.locale}/authorization`,
             name: 'Register',
             component: Registration
         },
         {
-            path: '/authorization',
-            name: 'Authorization',
+            path: '/registration',
+            redirect: `${i18n.locale}/registration`,
+            name: 'Register',
+            component: Registration
+        },
+        {
+            path: '/:lang/registration',
+            name: 'Register-lang',
+            component: Registration
+        },
+        {
+            path: '/:lang/authorization',
+            name: 'Authorization-lang',
             component: Authorization
         }
     ]

@@ -11,20 +11,20 @@
         </div>
         <b-card-text class="bg-white mb-n3 text-left">
           <button type="button" class="btn btn-link mt-n4" @click="show_form">
-            Ответить
+            {{ $t('chat.reply') }}
           </button>
           <button type="button" v-if="message.user.login === this.$store.getters.GET_LOGIN" class="btn btn-link mt-n4" @click="delete_message">
-            Удалить
+            {{ $t('chat.delete') }}
           </button>
           <button type="button" v-if="message.user.login === this.$store.getters.GET_LOGIN" class="btn btn-link mt-n4" @click="show_form">
-            Изменить
+            {{ $t('chat.change') }}
           </button>
           <div class="panel" v-show="show">
             <div class="panel-body">
               <textarea class="form-control" rows="2" v-model="payload.message_body"
-                        placeholder="Добавьте Ваш комментарий"/>
+                        v-bind:placeholder="$t('add-comment')"/>
               <div class="mar-top clearfix">
-                <button class="btn btn-sm btn-primary pull-right" @click="reply">Ответить</button>
+                <button class="btn btn-sm btn-primary pull-right" @click="reply">{{ $t('chat.reply') }}</button>
               </div>
             </div>
           </div>
@@ -34,7 +34,7 @@
       <b-card v-if="isDeleted" v-bind:title="message.user.login" style="width: 75%">
         <div class="card-body mt-n4">
           <b-card-text class="mb-3">
-            <p class="card-text">Комментарий удален</p>
+            <p class="card-text">{{ $t('chat.deleted') }}</p>
           </b-card-text>
         </div>
       </b-card>
