@@ -2,7 +2,7 @@
   <div className="animated fadeIn">
     <b-row>
       <b-col v-for="topic in get_topics" lg="4">
-        <a href="#/tasks">
+        <a v-bind:href="'#/' + $i18n.locale + '/tasks'">
           <b-card class="text-white bg-primary topics-cards">
               <div class="h2 m-0">{{topic.title}}</div>
               <div>{{topic.short_description}}</div>

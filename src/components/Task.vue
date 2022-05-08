@@ -10,7 +10,7 @@
 
       <b-row v-for="task in get_tasks">
         <b-col lg="12">
-          <a v-bind:href="'#/tasks/' + task.id">
+          <a v-bind:href="'#/' + $i18n.locale + '/tasks/' + task.id">
             <b-card>
               <b-row>
                 <b-col lg="9">
