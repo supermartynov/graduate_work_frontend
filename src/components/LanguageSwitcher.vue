@@ -32,6 +32,7 @@ export default {
       this.$router.push({
         params: { lang: locale }
       })
+      this.$router.go()
     }
   },
 }
