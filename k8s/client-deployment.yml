@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: suppermartynov/web_app_image
+          image: suppermartynov/web_kuber
           ports:
             - containerPort: 8080
 
