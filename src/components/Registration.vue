@@ -110,7 +110,7 @@ export default {
         password_confirm: this.form.password_confirm
       })
       .then(() => {
-        this.$router.push(`${i18n.locale}/authorization`)
+        this.$router.push(`/${i18n.locale}/authorization`)
       })
       .catch(err => {
         if (err.response.request.status === 409) {
