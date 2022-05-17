@@ -20,7 +20,7 @@
             Your query:
           </b-card-header>
           <b-card-body>
-            <b-form-textarea v-model="answer.sql_answer" placeholder="Enter the your query on SQL"></b-form-textarea>
+            <b-form-textarea v-model="sql_answer" placeholder="Enter the your query on SQL"></b-form-textarea>
           </b-card-body>
           <footer>
             <b-btn type="button" class="btn btn-success float-right">Send answer</b-btn>
@@ -28,7 +28,7 @@
           </footer>
         </b-card>
       </b-col>
-      <b-col lg="6">
+      <!--<b-col lg="6">
         <b-card>
           <b-card-header class="h4">
             {{'ERD diagram of the database ' + get_task.database.title}}
@@ -37,10 +37,10 @@
             <img style="height: 500px; width: 676px;" src="img/databases/university.png" alt="Database image">
           </b-card-body>
         </b-card>
-      </b-col>
-      <b-col lg="6">
+      </b-col>-->
+      <b-col lg="12" >
         <b-card>
-<!--          <div slot="header" v-html="caption"></div>-->
+          <div slot="header"> <!--v-html="caption"-->  </div>
           <b-table bordered="bordered" fixed="fixed" :items="items">
           </b-table>
           <nav>
@@ -60,7 +60,16 @@ export default {
   components: {Chat},
   data: function() {
     return {
-      answer: {}
+      sql_answer: "",
+    }
+  },
+
+  watch: {
+    sql_answer: function (){
+      console.log("Изменение")
+      if (this.sql_answer.length > 5) {
+        this.sql_answer = ""
+      }
     }
   },
   computed: {

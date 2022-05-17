@@ -53,5 +53,10 @@
   },
   "mephi": {
     "name": "МИФИ"
+  },
+  "query": {
+    "your-query": "Ваш запрос:",
+    "execute": "Выполнить",
+    "send answer": "Послать ответ"
   }
 }

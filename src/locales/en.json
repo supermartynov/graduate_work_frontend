@@ -53,5 +53,10 @@
   },
   "mephi": {
     "name": "MEPHI"
+  },
+  "query": {
+    "your-query": "Your query:",
+    "execute": "Execute",
+    "send answer": "Send answer"
   }
 }

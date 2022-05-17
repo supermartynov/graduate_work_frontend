@@ -24,8 +24,8 @@ export default {
     },
     mutations: {
         SOCKET_NEW_MESSAGE(state, data) {
-            console.log("Начало SOCKET_NEW_MESSAGE")
-            console.log(data)
+            //console.log("Начало SOCKET_NEW_MESSAGE")
+            //console.log(data)
             let tmp = state.messages
             state.messages = {}
 
