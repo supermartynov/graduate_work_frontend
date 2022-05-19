@@ -1,25 +1,66 @@
 <template>
   <div class="relative">
     <b-card-body>
-      {{ mistake_message }}
-      <br>
-      {{hint}}
-      <HighlightableInput
-          v-b-tooltip.hover.top.html="tipMethod"
-          style="min-height:55px; max-height: 150px; text-indent: 20px;"
-          class="w-100 border-danger font-size-2 text-left bg-light"
-          highlight-style="background-color:yellow"
-          :highlight-enabled="highlightEnabled"
-          :highlight="highlight"
-          v-model="sql_answer"
-          aria-placeholder="Enter the your query on SQL"
-      />
+      <b-row>
+        <b-col cols="10">
+          <HighlightableInput
+              style="min-height:55px; max-height: 150px; text-indent: 20px;"
+              class="w-100 border-danger font-size-2 text-left bg-light"
+              highlight-style="background-color:yellow"
+              :highlight-enabled="highlightEnabled"
+              :highlight="highlight"
+              v-model="sql_answer"
+              aria-placeholder="Enter the your query on SQL"
+          />
+        </b-col>
+        <b-col cols="2" order="2">
+          <b-form-select  style="width: 120px; margin-top: -50px; margin-left: -70px"
+                         class="ml-n-4 mt-n-5"
+                         v-if="!(hints.length === 0) && selected_hint === ''"
+                         v-model="selected_hint"
+                         :options="hints"
+                         :select-size="hints.length"/>
+        </b-col>
+      </b-row>
+      <b-row style="width: 100%">
+        <b-col cols="10">
+
+        </b-col>
+        <b-col cols="2">
+
+        </b-col>
+      </b-row>
+<!--      <section>
+        <b-field>
+          <b-select
+              style="width: 20%"
+              :input="this.hints"
+              multiple
+              native-size="8"
+              v-model="selectedOptions">
+            <option value="flint">Flint</option>
+            <option value="silver">Silver</option>
+            <option value="vane">Vane</option>
+            <option value="billy">Billy</option>
+            <option value="jack">Jack</option>
+            <option value="heisenberg">Heisenberg</option>
+            <option value="jesse">Jesse</option>
+            <option value="saul">Saul</option>
+            <option value="mike">Mike</option>
+          </b-select>
+        </b-field>
+      </section>-->
+      <!--v-b-tooltip.top.html="tipMethod"-->
       <!--<b-form-textarea v-model="sql_answer" placeholder="Enter the your query on SQL"></b-form-textarea-->
     </b-card-body>
     <footer>
       <b-btn type="button" class="btn btn-success float-right" @click="check_field">Send answer</b-btn>
       <b-btn type="button" variant="primary" class="btn btn-primary float-right mr-1">Execute</b-btn>
     </footer>
+    {{selected}}
+    {{ mistake_message }}
+    <br>
+    {{selected_hint}}
 
 
   </div>
@@ -37,7 +78,9 @@ export default {
       sql_answer: "",
       wordsArr: [],
       mistake_message: "",
-      hint: [],
+      hints: [],
+      selected_hint: "",
+      selected: [],
       target_table: "",
       highlight: [
         {text: 'select', style: "color:#001180; font-weight: 550;"},
@@ -58,13 +101,18 @@ export default {
   },
   watch: {
     sql_answer: function () {
-      let query_arr = this.sql_answer.split(/[ ,]+/)
-      if (query_arr[query_arr.length - 1].includes("\.")) {
+      this.selected_hint = ""
+      let query_arr = this.sql_answer.trim().replace(/\s+/g, ' ').split(/[ ,]+/)
+      console.log(query_arr)
+      if (query_arr[query_arr.length - 1].includes("\.") &&
+          query_arr[query_arr.length - 1].indexOf("\.") === query_arr[query_arr.length - 1].length - 1
+      )
+      {
         let target_table = query_arr[query_arr.length - 1].split("\.")[0];
         if (target_table.trim() !== "") {
           let find_table_flag = false
           for (let table of this.tables) {
-            if (target_table === table.title) {
+            if (target_table.toLowerCase() === table.title) {
               find_table_flag = true
               target_table = table
               break
@@ -72,12 +120,12 @@ export default {
           }
           console.log(find_table_flag)
           if (find_table_flag) {
-            this.hint = target_table.fields
+            this.hints = target_table.fields
+            return
           }
         }
-      } else {
-        this.hint = []
       }
+      this.hints = []
     }
   },
   //select one, two, three from tabletka
@@ -129,15 +177,22 @@ export default {
         }
       }
     },
-    check_table_exists: function () {
-
-    }
   },
-  computed: {
+
+  /*computed: {
     tipMethod() {
-      return '<strong>' + new Date() + '</strong>'
+      if (this.hints.length === 0) {
+        return null
+      }
+      let options = ""
+      for (let hint of this.hints) {
+        options += ` <option>` + hint + `</option>`
+      }
+      let html_tags = `<b-field> <b-select native-size="${this.hints.length}">` + options +` </b-select></b-field>`
+
+      return html_tags
     }
-  }
+  }}*/
 }
 </script>
 
