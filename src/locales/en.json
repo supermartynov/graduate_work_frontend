@@ -57,6 +57,6 @@
   "query": {
     "your-query": "Your query:",
     "execute": "Execute",
-    "send answer": "Send answer"
+    "send_answer": "Send answer"
   }
 }

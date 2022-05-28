@@ -3,6 +3,9 @@
     <b-card-body>
       <b-row>
         <b-col cols="10">
+          <div class="badge bg-primary font-size=md" v-if="mistake_message">
+            {{ mistake_message }}
+          </div>
           <HighlightableInput
               style="min-height:55px; max-height: 150px; text-indent: 20px;"
               class="w-100 border-danger font-size-2 text-left bg-light"
@@ -14,20 +17,12 @@
           />
         </b-col>
         <b-col cols="2" order="2">
-          <b-form-select  style="width: 120px; margin-top: -50px; margin-left: -70px"
+          <b-form-select @click="" style="width: 120px; margin-top: -50px; margin-left: -70px"
                          class="ml-n-4 mt-n-5"
                          v-if="!(hints.length === 0) && selected_hint === ''"
                          v-model="selected_hint"
                          :options="hints"
                          :select-size="hints.length"/>
-        </b-col>
-      </b-row>
-      <b-row style="width: 100%">
-        <b-col cols="10">
-
-        </b-col>
-        <b-col cols="2">
-
         </b-col>
       </b-row>
 <!--      <section>
@@ -54,15 +49,10 @@
       <!--<b-form-textarea v-model="sql_answer" placeholder="Enter the your query on SQL"></b-form-textarea-->
     </b-card-body>
     <footer>
-      <b-btn type="button" class="btn btn-success float-right" @click="check_field">Send answer</b-btn>
-      <b-btn type="button" variant="primary" class="btn btn-primary float-right mr-1">Execute</b-btn>
+      <b-btn type="button" class="btn btn-success float-right" @click="check_field">{{ $t('query.send_answer') }}</b-btn>
+      <b-btn type="button" variant="primary" class="btn btn-primary float-right mr-1">{{ $t('query.execute') }}</b-btn>
     </footer>
-    {{selected}}
-    {{ mistake_message }}
     <br>
-    {{selected_hint}}
-
-
   </div>
 </template>
 
@@ -101,9 +91,9 @@ export default {
   },
   watch: {
     sql_answer: function () {
+      this.mistake_message = ""
       this.selected_hint = ""
       let query_arr = this.sql_answer.trim().replace(/\s+/g, ' ').split(/[ ,]+/)
-      console.log(query_arr)
       if (query_arr[query_arr.length - 1].includes("\.") &&
           query_arr[query_arr.length - 1].indexOf("\.") === query_arr[query_arr.length - 1].length - 1
       )
@@ -118,7 +108,6 @@ export default {
               break
             }
           }
-          console.log(find_table_flag)
           if (find_table_flag) {
             this.hints = target_table.fields
             return
@@ -126,6 +115,17 @@ export default {
         }
       }
       this.hints = []
+    },
+    selected_hint: function () {
+      if (this.selected_hint === "") {
+        return
+      }
+      let select_arr = this.sql_answer.split(/[ ,><=]+/);
+      let word_with_dot = select_arr[select_arr.length - 1]
+      let tmpArr = word_with_dot.split("\.")
+      console.log(tmpArr + " -  word with dot arr")
+      tmpArr[1] = this.selected_hint
+      this.sql_answer = this.sql_answer.replace(word_with_dot, tmpArr.join("\."))
     }
   },
   //select one, two, three from tabletka
@@ -141,7 +141,7 @@ export default {
         let target_table = select_array[select_array.indexOf("FROM") + 1]
         let find_table_flag = false
         for (let table of this.tables) {
-          if (target_table === table.title.toUpperCase()) {
+          if (target_table.toUpperCase() === table.title.toUpperCase()) {
             find_table_flag = true
             target_table = table
             break
@@ -158,7 +158,7 @@ export default {
           let select_sub_array = select_array.slice(select_array.indexOf("SELECT") + 1, select_array.indexOf("FROM"))
           for (let selected_field of select_sub_array) {
             if (!target_table.fields.includes(selected_field.toLowerCase())) {
-              this.mistake_message = `В таблице ${target_table.title} отсутствует поле ${selected_field}`
+              this.mistake_message = `В таблице ${target_table.title.toUpperCase()} отсутствует поле ${selected_field.toUpperCase()}`
               break
             }
           }

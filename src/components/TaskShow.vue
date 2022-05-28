@@ -4,7 +4,7 @@
       <b-col lg="6">
         <b-card>
           <b-card-header class="h4">
-            Your query:
+            {{ $t('query.your-query') }}
           </b-card-header>
           <QueryInput/>
         </b-card>

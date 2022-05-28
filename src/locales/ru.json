@@ -57,6 +57,6 @@
   "query": {
     "your-query": "Ваш запрос:",
     "execute": "Выполнить",
-    "send answer": "Послать ответ"
+    "send_answer": "Послать ответ"
   }
 }
