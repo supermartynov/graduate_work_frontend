@@ -1,6 +1,6 @@
 <template>
   <div className="animated fadeIn">
-    <b-row>
+    <b-row v-if="this.$store.getters.GET_EMAIL">
       <b-col v-for="topic in get_topics" lg="4">
         <a v-bind:href="'#/' + $i18n.locale + '/tasks'">
           <b-card class="text-white bg-primary topics-cards">
@@ -12,12 +12,15 @@
         </a>
       </b-col>
     </b-row>
+    <UnauthorizedUserDashboard v-if="!this.$store.getters.GET_EMAIL"/>
   </div>
 </template>
 
 <script>
+import UnauthorizedUserDashboard from "@/components/UnauthorizedUserDashboard";
 export default {
   name: "Topic",
+  components: {UnauthorizedUserDashboard},
   computed: {
     get_topics() {
       return this.$store.getters.ALL_TOPICS;
