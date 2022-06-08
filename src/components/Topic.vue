@@ -18,6 +18,7 @@
 
 <script>
 import UnauthorizedUserDashboard from "@/components/UnauthorizedUserDashboard";
+import axios from "../services/api";
 export default {
   name: "Topic",
   components: {UnauthorizedUserDashboard},
@@ -28,6 +29,17 @@ export default {
   },
   mounted: function () {
     this.$store.dispatch('GET_TOPICS');
+  },
+  beforeCreate() {
+    axios.get("http://localhost:2000/dashboard")
+        .then(res => {
+          this.$store.commit('UPDATE_EMAIL', res.data.email)
+          this.$store.commit('UPDATE_LOGIN', res.data.email)
+        })
+        .catch((err) => {
+          console.log(err)
+          this.$store.commit('UPDATE_EMAIL', null)
+        })
   }
 }
 

@@ -32,6 +32,7 @@
 <script>
 import { HeaderDropdown as AppHeaderDropdown } from '@coreui/vue'
 import NonAuthHeadder from "@/components/NonAuthHeadder";
+import {i18n} from "@/plugin/i18n";
 export default {
   name: 'DefaultHeaderDropdownAccnt',
   components: {
@@ -44,8 +45,9 @@ export default {
     }
   },
   methods: {
-    goToLoginPage: function() {
-     this.$store.dispatch("LOGOUT");
+    goToLoginPage: async function() {
+      await this.$store.dispatch("LOGOUT");
+      this.$router.push(`/${i18n.locale}/topics`)
     }
   },
 }
