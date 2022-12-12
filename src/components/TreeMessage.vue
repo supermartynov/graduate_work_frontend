@@ -1,7 +1,10 @@
 <template>
   <div>
-    <a class="media-left" href="#"><img class="img-circle img-sm" alt="Профиль пользователя"
-                                               src="https://bootstraptema.ru/snippets/icons/2016/mia/2.png"></a>
+    <a class="media-left ml-2" href="#">
+      <img v-if="message.user.login == 'user1' " class="img-circle img-sm" alt="Профиль пользователя" src="https://bootstraptema.ru/snippets/icons/2016/mia/4.png">
+      <img v-if="message.user.login == 'user2' " class="img-circle img-sm" alt="Профиль пользователя" src="https://bootstraptema.ru/snippets/icons/2016/mia/2.png">
+      <img v-if="message.user.login == 'user3' " class="img-circle img-sm" alt="Профиль пользователя" src="https://bootstraptema.ru/snippets/icons/2016/mia/1.png">
+    </a>
     <div>
       <b-card v-if="!isDeleted" v-bind:title="message.user.login" style="width: 75%">
         <div class="card-body mt-n4">
@@ -30,14 +33,18 @@
           </div>
         </b-card-text>
       </b-card>
+      <hr>
+      <div v-if="isDeleted">
+        <b-card v-if="isDeleted" v-bind:title="message.user.login" style="width: 75%">
+          <div class="card-body mt-n4">
+            <b-card-text class="mb-3">
+              <p class="card-text">{{ $t('chat.deleted') }}</p>
+            </b-card-text>
+          </div>
+        </b-card>
+        <hr>
+      </div>
 
-      <b-card v-if="isDeleted" v-bind:title="message.user.login" style="width: 75%">
-        <div class="card-body mt-n4">
-          <b-card-text class="mb-3">
-            <p class="card-text">{{ $t('chat.deleted') }}</p>
-          </b-card-text>
-        </div>
-      </b-card>
       <div class="ml-3">
         <tree-children-message v-if="message.children" :children="message.children"/>
       </div>

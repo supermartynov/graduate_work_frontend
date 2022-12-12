@@ -42,6 +42,10 @@
     "account-settings": "Account-settings",
     "logout": "Logout"
   },
+  "welcome-page" : {
+    "material": "A significant amount of material",
+    "start-education": "Start learning!"
+  },
   "langSwitcher": "language",
   "chat": {
     "reply": "Reply",

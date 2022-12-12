@@ -44,8 +44,8 @@
               <b-col>
                 <b-img left src="img/img_for_dashboard/sql-teoretical.png" class="col-md-auto col-sm-12" rounded alt="Center image" width="504" height="400"></b-img>
               </b-col>
-              <b-col class="my-5 col-md-6 col-sm-12 mr-2" >
-                <h4 class="blocks1"><strong>Большое количество теоретического материала</strong></h4>
+              <b-col class="my-5 col-md-4 col-sm-12 mr-2" >
+                <h4 class="blocks1"><strong>{{ $t('welcome-page.material') }}</strong></h4>
               </b-col>
             </b-row>
 
@@ -53,7 +53,7 @@
 
             <b-row class="mt-5">
               <b-col class="my-5 col-md-12 col-sm-12 mr-2" >
-                <router-link to="/authorization"><b-button size="lg" variant="outline-primary">Начать обучение !</b-button></router-link>
+                <router-link to="/authorization"><b-button size="lg" variant="outline-primary">{{ $t('welcome-page.start-education') }}</b-button></router-link>
               </b-col>
             </b-row>
 
@@ -79,9 +79,9 @@ export default {
 }
 .blocks1 {
   font-size: 2.2rem;
-  font-weight: 200;
+  font-weight: 100;
   line-height: 1.4;
-  font-family: "Bauhaus 93";
+
 }
 .blocks2 {
   font-size: 2.2rem;
